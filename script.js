@@ -77,7 +77,14 @@ function answerQuestion() {
     renderQuestion ()
 }
 
+// Function that keeps track of the score 
+function keepScore() {
+    for(var qIndex = 0; qIndex <= lastQuestionIndex; qIndex++) {
+        progress.innherHTML +="div class="prog" id=
+    }
+}
 
+// Counter
 
 
 

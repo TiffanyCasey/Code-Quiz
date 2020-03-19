@@ -1,4 +1,4 @@
-// Initialize 
+// Variables by ID
 var start = document.getElementById("start");
 var score = document.getElementById("score");
 var timer = document.getElementById("timer");
@@ -8,6 +8,29 @@ var choice1 = document.getElementById("1");
 var choice2 = document.getElementById("2");
 var choice3 = document.getElementById("3");
 var choice4 = document.getElementById("4");
+var submitButton = document.getElementById("submit");
+
+
+
+// Variables by Class 
+
+var start = document.querySelectorAll("h1");
+var explanation = document.querySelectorAll("p");
+var button = document.querySelector("button");
+
+
+// CSS 
+
+start[0].setAttribute("style", "font-size:40px; text-align:center; font-weight:bold; font-family: sans-serif; padding-top: 150px;");
+explanation[0].setAttribute("style","font-size:20px; font-family: sans-serif; padding:20px; text-align:center;");
+button.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+submitButton.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+score.setAttribute("style", "color:purple; padding-left:20px;");
+timer.setAttribute("style", "float:right; padding-right:30px;");
+button.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+
+
+
 
 //Variables     
 var totalScore = 0;
@@ -77,31 +100,25 @@ function answerQuestion() {
     renderQuestion ()
 }
 
-// Function that keeps track of the score 
-function keepScore() {
-    for(var qIndex = 0; qIndex <= lastQuestionIndex; qIndex++) {
-        progress.innherHTML +="div class="prog" id=
-    }
-}
 
 // Counter
 
 
 
 
-// Access Array 
-questions [0].question
-questions [0].choice1
-questions [0].choice2
-questions [0].choice3
-questions [0].choice4
-questions [0].correct
+// Accessing the Questions Array 
+questions[0].question
+questions[0].choice1
+questions[0].choice2
+questions[0].choice3
+questions[0].choice4
+questions[0].correct
 
 // Button event listener 
-start.addEventListener("click", startQuiz);
-choice1.addEventListener("click", answerOne)
-choice2.addEventListener("click", answerTwo)
-choice3.addEventListener("click", answerThree)
-choice4.addEventListener("click", answerFour)
+// start.addEventListener("click", startQuiz);
+// choice1.addEventListener("click", answerOne)
+// choice2.addEventListener("click", answerTwo)
+// choice3.addEventListener("click", answerThree)
+// choice4.addEventListener("click", answerFour)
 
     

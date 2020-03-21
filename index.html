@@ -5,107 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 
 <!--Header-->
 <header class="header">
     <div class="card-body justify-content-end">
-        <a id="score">View High Scores</a>
-        <a id="timer">Time: </a>
-            <div id="score"></div>
-            <div id="timer"></div>
+        <a id="score"></a>
+        <a id="timer"></a>
+    </div>
 </header>
 
-<!--Title -->
+<!--Page One -->
 <main class="container">
     <div class="body"> 
-        <h1 class="start">Coding Quiz Challenge</h1>
 
         <!--Quiz Explanation -->
-        <div class="explanation">
-        <p>Try to answer the following code-related questions within the time 
-        limit. Keep in mind that incorrect answers will penalize your <score>
-        time by ten seconds</p>
+        <h1 id="start"></h1>
+        <div id="explanation">
+        <p></p>
         </div>
 
-<!--Button -->
-<div class="text-center">
-<button type="button" class="btn">Start Quiz</button>
-</div>
+        <!--Button -->
+        <div class="text-center">
+        <button type="button" class="btn"></button>
+        </div>
+    </div>  
 
 <!--Questions -->
-<div quiz>
+<div class="quiz">
     <div id= "questions">
         <div class="question">
-            <div class="quizQuestion"></div>
+            <div id="quizQuestions"></div>
             <div type="button" class="btn" id="1" onclick="checkAnswer('1')"></div>
             <div type="button" class="btn" id="2" onclick="checkAnswer('2')"></div>
             <div type="button" class="btn" id="3" onclick="checkAnswer('3')"></div>
             <div type="button" class="btn" id="4" onclick="checkAnswer('4')"></div>
-            <div correct></div>
-        </div>
-        
-        <div class="question">
-            <div class="quizQuestion"></div>
-            <div type="button" class="btn" id="1" onclick="checkAnswer('1')"></div>
-            <div type="button" class="btn" id="2" onclick="checkAnswer('2')"></div>
-            <div type="button" class="btn" id="3" onclick="checkAnswer('3')"></div>
-            <div type="button" class="btn" id="4" onclick="checkAnswer('4')"></div>
-            <div</div>
-        </div>
-
-        <div class="question">
-            <div class="quizQuestion"></div>
-            <div type="button" class="btn" id="1" onclick="checkAnswer('1')"></div>
-            <div type="button" class="btn" id="2" onclick="checkAnswer('2')"></div>
-            <div type="button" class="btn" id="3" onclick="checkAnswer('3')"></div>
-            <div type="button" class="btn" id="4" onclick="checkAnswer('4')"></div>
-            <div correct></div>
-        </div>
-
-        <div class="question">
-            <div class="quizQuestion"></div>
-            <div type="button" class="btn" id="1" onclick="checkAnswer('1')"></div>
-            <div type="button" class="btn" id="2" onclick="checkAnswer('2')"></div>
-            <div type="button" class="btn" id="3" onclick="checkAnswer('3')"></div>
-            <div type="button" class="btn" id="4" onclick="checkAnswer('4')"></div>
-            <div correct></div>
-        </div>
-
-        <div class="question">
-            <div class="quizQuestion"></div>
-            <div type="button" class="btn" id="1" onclick="checkAnswer('1')"></div>
-            <div type="button" class="btn" id="2" onclick="checkAnswer('2')"></div>
-            <div type="button" class="btn" id="3" onclick="checkAnswer('3')"></div>
-            <div type="button" class="btn" id="4" onclick="checkAnswer('4')"></div>
-            <div correct></div>
+            <div id="correct"></div>
         </div>
     </div>
 
 <!--Final Score-->
 <div complete>
-    <div id="finalScore">
-        <h1 class="end">All done!</h1>
-        <p>Your final score is: </p>
+    <div class="finalScore">
+        <h1 id="end"></h1>
+        <p id="complete"></p>
         <form class="form-inline">
             <div class="form-group mb-2">
-              <label for="staticEmail2" class="sr-only">Enter initials: </label>
-              <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Enter initials: ">
+              <label class="sr-only" id="initials"></label>
+              <input type="text" readonly class="form-control-plaintext">
             </div>
             <div class="form-group mx-sm-3 mb-2">
-              <label for="inputPassword2" class="sr-only">Password</label>
-              <input type="password" class="form-control" id="inputPassword2">
+              <label for="inputInitials" class="sr-only"></label>
+              <input type="text" class="form-control">
             </div>
-            <button type="button" class="btn" id="submit">Submit</button>
+            <button type="button" class="btn" id="submit"></button>
           </form>
-
-
     </div>
-
 </div>
+
+<!--High SCores -->
 
 </div>
 </main>

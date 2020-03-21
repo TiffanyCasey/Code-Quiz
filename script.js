@@ -1,42 +1,47 @@
-// Variables by ID
-var start = document.getElementById("start");
+// Body set as a variable
+//var body = document.body;
+
+// TOP BAR 
+
+// Variables 
 var score = document.getElementById("score");
 var timer = document.getElementById("timer");
-var quiz = document.getElementById("quiz");
-var questions = document.getElementById("questions");
+
+//Attributes 
+score.setAttribute("style", "color:purple; padding-left:20px;");
+timer.setAttribute("style", "float:right; padding-right:30px;");
+
+score.textContent = "View High Scores";
+// add seconds left at top or move down. timer.textContent = "Time: " + secondsLeft;
+
+
+// START QUIZ
+var h1 = document.querySelectorAll("h1");
+var text = document.querySelectorAll("p");
+var button = document.querySelector("button");
+h1[0].setAttribute("style", "font-size:40px; text-align:center; font-weight:bold; font-family: sans-serif; padding-top: 150px;");
+text[0].setAttribute("style","font-size:20px; font-family: sans-serif; padding:20px; text-align:center;");
+button.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+h1[0].textContent = "Coding Quiz Challenge"
+text[0].textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your time by ten seconds";
+button.textContent = "Start Quiz";
+
+// Variables for questions 
+var quizQuestions = document.getElementById("quizQuestions");
 var choice1 = document.getElementById("1");
 var choice2 = document.getElementById("2");
 var choice3 = document.getElementById("3");
 var choice4 = document.getElementById("4");
-var submitButton = document.getElementById("submit");
+var correctAnswer = document.getElementById("correct");
+quizQuestions.setAttribute("style","font-size:20px; font-family:sans-serif;");
+choice1.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+choice2.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+choice3.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+choice4.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+correctAnswer.setAttribute("style","font-size:15px; font-family: sans-serif; color:grey font-style: italic");
 
 
-
-// Variables by Class 
-
-var start = document.querySelectorAll("h1");
-var explanation = document.querySelectorAll("p");
-var button = document.querySelector("button");
-
-
-// CSS 
-
-start[0].setAttribute("style", "font-size:40px; text-align:center; font-weight:bold; font-family: sans-serif; padding-top: 150px;");
-explanation[0].setAttribute("style","font-size:20px; font-family: sans-serif; padding:20px; text-align:center;");
-button.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
-submitButton.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
-score.setAttribute("style", "color:purple; padding-left:20px;");
-timer.setAttribute("style", "float:right; padding-right:30px;");
-button.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
-
-
-
-
-//Variables     
-var totalScore = 0;
-var countDown = 0;   
-
-// Question Array 
+// QUESTIONS 
 var questions = [
     {
         question: "Commonly used Data Types Include:",
@@ -80,7 +85,54 @@ var questions = [
     }
 ]
 
-// Function that runs through question and answer 
+//ALL DONE 
+/* var end = document.getElementById("allDone")
+var complete = document.getElementById("complete");
+var submitButton = document.getElementById("submit");
+var initials = document.getElementById("initials")
+end.setAttribute("style","font-size:20px; font-family: sans-serif; padding:20px;");
+finalScore.setAttribute("style","font-size:20px; font-family:sans-serif; padding:20px;");
+submitButton.setAttribute("style", "text-align:center; background-color:#8064A2; border-color:#8064A2; color:white;font-size:22px; padding: 0px 12px 0px 12px;");  
+initials.setAttribute("style","font-size:15px; font-family: sans-serif;");
+end.textContent = "All done!";
+complete.textContent = "Your final score is " + finalScore;
+submitButton.textContent - "Submit";
+initials.textContent - "Enter Initials";
+
+//High Scores 
+
+
+
+
+
+// Timer Function
+var timeEl = document.getElementById("timer");
+
+var totalScore = 0;
+var secondsLeft = 90;  
+
+function setTime() {
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      timeEl.textContent = "Time: " + secondsLeft;
+  
+      if(secondsLeft === 0) {
+        clearInterval(timerInterval);
+        finalScore();
+      }
+  
+    }, 1000);
+  }
+
+  // Final Score Function 
+  function showScore() {
+    finalScore.textContent = " ";
+    mainEl.appendChild(imgEl);
+  
+  }
+  setTime();
+
+  // Function that runs through question and answer 
 
 var lastQuestionIndex = questions.length-1;
 var questionUserAnswering = 0;
@@ -100,25 +152,7 @@ function answerQuestion() {
     renderQuestion ()
 }
 
+ // Score Function NEED TO FINISH 
+ //var finalScore = 
 
-// Counter
-
-
-
-
-// Accessing the Questions Array 
-questions[0].question
-questions[0].choice1
-questions[0].choice2
-questions[0].choice3
-questions[0].choice4
-questions[0].correct
-
-// Button event listener 
-// start.addEventListener("click", startQuiz);
-// choice1.addEventListener("click", answerOne)
-// choice2.addEventListener("click", answerTwo)
-// choice3.addEventListener("click", answerThree)
-// choice4.addEventListener("click", answerFour)
-
-    
+*/

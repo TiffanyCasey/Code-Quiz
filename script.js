@@ -30,7 +30,7 @@ finalScorePage.style.display = "none"; // Hide Final Core Page
 // START QUIZ / TIMER FUNCTION
 submitButton.addEventListener("click", startQuiz); // Start Quiz Button 
 
-  var secondsLeft = 80; // Seconds in Timer 
+  var secondsLeft = 3; // Seconds in Timer 
   var startScore = 0; // Starting time 
   var finalScore = "";  // Holder for Final Time 
   var timer = document.getElementById("timer"); // Timer Variable 
@@ -38,7 +38,6 @@ submitButton.addEventListener("click", startQuiz); // Start Quiz Button
 timer.textContent = "Time: " + startScore; // Holder text in nav bar  
 
 function startQuiz() { // Timer function Begins 
-
   finalScorePage.style.display = "none"; // Hide Final Core Page 
   quizChallengePage.style.display ="none"; // Hide Quiz Challenge Page 
   quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
@@ -47,32 +46,24 @@ function startQuiz() { // Timer function Begins
     secondsLeft--;
     timer.textContent = "Time: " + secondsLeft;
 
-    if(secondsleft === 0) {
+    if (secondsLeft === 0 || quizQuestions.length === null) {
       clearInterval(timerInterval);
-      deductPoints();
     }
   }, 1000);
 }
-
     
-// Questions Function  
-var lastQuestionIndex = quizQuestions.length-1;
-var questionUserAnswering = 0;
+// Questions Loop
 
-function answerQuestion() {
-    var q = questions[questionUserAnswering];
-    question.innerHTML ="<p>" + q.question+ "</p>";
-    choice1.innerHTML = q.choice1;
-    choice2.innerHTML = q.choice2;
-    choice3.innerHTML = q.choice3;
-    choice4.innerHTML = q.choice4;
-
-    questionUserAnswering = 0; 
-    renderQuestion()
-
-    questionUserAnswering++
-    renderQuestion ()
+for(var i=0; 1 < quizQuestions.length; i++) {
+  var answerResponse = document.createElement(quizQuestions[i].prompt)
+  if(answerResponse == quizQuestions[i].correct) {
+    startScore++;
+    answerResponse.textContent = "Correct!";
+  } else {
+    answerResponse.textContent = "Wrong!";
+  }
 }
+
 
 // Go to All Done page & Print Score
 function finalScorePage() {
@@ -93,7 +84,7 @@ var submittedInitial = document.getElementById("response");
 initialButton.textContent = "Submit";
 initials.textContent = "Enter Initials";
 
-initialButton.addEventListener("click", function(event) {
+initialButton.addEventListener("click", function(event) { // click takes you to the high score page 
   event.preventDefault();
   
   console.log(event);
@@ -119,7 +110,6 @@ function showScore() {
 var quizQuestions = [
   {
       question: "Commonly used Data Types Include:", 
-    
       choice1: "1. strings",
       choice2: "2. booleans",
       choice3: "3. alerts",
@@ -157,8 +147,8 @@ var quizQuestions = [
       choice3: "3. for loops",
       choice4: "4. console.log",
       correct: "4",
-  }
-]
+  },
+];
 
 
 

@@ -4,7 +4,7 @@ var start = document.getElementById("start");
 var submitButton = document.getElementById("submit");
 var explanation = document.getElementById("explanation");
 var submitButton = document.getElementById("submitButton");
-var quizQuestions = document.getElementById("quizQuestions");
+var quizQuestionHeader = document.getElementById("quizQuestions");
 var choice1 = document.getElementById("1");
 var choice2 = document.getElementById("2");
 var choice3 = document.getElementById("3");
@@ -13,6 +13,7 @@ var answerResponse = document.getElementById("answerResponse");
 var allDone = document.getElementById("allDone")
 var finalScoreIs = document.getElementById("finalScoreIs");
 var clearHighScores = document.getElementById("clearHighScores");
+
 
 //Variable Classes 
 var quizChallengePage = document.querySelector(".quizChallengePage");
@@ -30,7 +31,7 @@ finalScorePage.style.display = "none"; // Hide Final Core Page
 // START QUIZ / TIMER FUNCTION
 submitButton.addEventListener("click", startQuiz); // Start Quiz Button 
 
-  var secondsLeft = 3; // Seconds in Timer 
+  var secondsLeft = 80; // Seconds in Timer 
   var startScore = 0; // Starting time 
   var finalScore = "";  // Holder for Final Time 
   var timer = document.getElementById("timer"); // Timer Variable 
@@ -50,20 +51,40 @@ function startQuiz() { // Timer function Begins
       clearInterval(timerInterval);
     }
   }, 1000);
-}
-    
-// Questions Loop
 
-for(var i=0; 1 < quizQuestions.length; i++) {
-  var answerResponse = document.createElement(quizQuestions[i].prompt)
-  if(answerResponse == quizQuestions[i].correct) {
-    startScore++;
-    answerResponse.textContent = "Correct!";
-  } else {
-    answerResponse.textContent = "Wrong!";
+// Question Function - NEED TO FIX
+
+function askQuestions() {
+  questionNumber++;
+  answer = questions[questionNumber].answer
+
+  questionHead.textContent = questions[questionNumber].title;
+  answerChoices.innerHTML = "";
+
+  var choices = questions[questionNumber].choices;
+
+// Loop Questions - NEED TO FIX 
+  for (var i = 0; i < choices.length; i++) {
+      var answerResponse = document.createElement("button");
+
+      answerResponse.textContent = choices[i]
+      answerBtn = answerChoices.appendChild(answerResponse).setAttribute("class", "button");
+
+ 
+  
+    answerResponse.innerHTML = "";
+
+    
+  
+      if (answerResponse == quizQuestions[i].correct) {
+        startScore++;
+        answerResponse.textContent = "Correct!";
+      } else {
+        answerResponse.textContent = "Wrong!";
+      }
+    }
   }
 }
-
 
 // Go to All Done page & Print Score
 function finalScorePage() {

@@ -5,69 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
-    <link rel="stylesheet" href="style.css"/>
+    <!--Link to CSS Styling -->
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <!--Link to Boostrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
+    <!--Header with timer & link to high scores page-->
+    <nav class="header">
+        <div class="card-body justify-content-end">
+            <a id="score" href="highscore.html"></a>
+            <a id="timer"></a>
+        </div>
+    </nav>
 
-<!--Header-->
-<header class="header">
-    <div class="card-body justify-content-end">
-        <a id="score"></a>
-        <a id="timer"></a>
-    </div>
-</header>
+    <!--Main Container -->
+    <main class="container">
 
-<!--Main Container -->
-<main class="container">
+        <!--Coding Quiz Challenge Page-->
+        <div class="text-center">
+            <h1 id="start"></h1>
+            <p id="explanation"></p>
+            <button id="submit" class ="btn active" type="button"></button>
+        </div>
 
-    <!--Coding Quiz Challenge Page-->
-    <div class="text-center">
-        <h1 type="hidden"id="start"></h1>
-        <p id="explanation"></p>
-        <button class ="btn" type="button"></button>
-    </div>
+        <!--Questions -->
+        <div class="clearfix">
+            <h2 id="quizQuestions"><h2>
+            <ul>
+                <li><button class="btn" type="button" id="1" onclick="checkAnswer('1')"></button></li>
+                <li><button class="btn" type="button" id="2" onclick="checkAnswer('2')"></button></li>
+                <li><button class="btn" type="button" id="3" onclick="checkAnswer('3')"></button></li>
+                <li><button class="btn" type="button" id="4" onclick="checkAnswer('4')"></button></li>
+            </ul>
+            <!--Response after user selects answer -->
+            <div id="answerResponse"></div>
+        </div>
 
-    <!--Questions -->
-    <div class="quiz">
-        <h2 id="quizQuestions"><h2>
-        <button class="btn" type="button" id="1" onclick="checkAnswer('1')"></button>
-        <button class="btn" type="button" id="2" onclick="checkAnswer('2')"></button>
-        <button class="btn" type="button" id="3" onclick="checkAnswer('3')"></button>
-        <button class="btn" type="button" id="4" onclick="checkAnswer('4')"></button>
-        <div id="correct"></div>
-    </div>
+        <!--Final Score-->
+        <div class="finalScore">
+            <h2 id="allDone"></h2>
+            <p id="finalScoreIs"></p>
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <label class="sr-only" id="initials"></label>
+                    <input type="text" readonly class="form-control-plaintext">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="inputInitials" class="sr-only"></label>
+                    <input type="text" class="form-control">
+                </div>
+                <button class ="btn" type="button" id="submit"></button>
+            </form>
+        </div>
+    
+    </main>
 
-    <!--Final Score-->
-
-    <div class="finalScore">
-        <input type="hidden">
-        <h2 type="hidden"id="allDone"></h2>
-        <p id="finalScoreIs"></p>
-        <form class="form-inline">
-            <div class="form-group mb-2">
-                <label class="sr-only" id="initials"></label>
-                <input type="text" readonly class="form-control-plaintext">
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-                <label for="inputInitials" class="sr-only"></label>
-                <input type="text" class="form-control">
-            </div>
-            <button class ="btn" type="button" id="submit"></button>
-        </form>
-    </div>
-  
-
-<!--High SCores -->
-
-
-</main>
-
-<script src="script.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<!--link to JavaScript Page -->
+<script src="script.js" type="text/javascript"></script>
 </body>
-
 </html>

@@ -5,6 +5,7 @@ var timer = document.getElementById("timer");
 var secondsLeft = 80;
 var totalScore = 0;
 var start = document.getElementById("start");
+var submitButton = document.getElementById("submit");
 var explanation = document.getElementById("explanation");
 var submitButton = document.getElementById("submit");
 var quizQuestions = document.getElementById("quizQuestions");
@@ -15,18 +16,13 @@ var choice4 = document.getElementById("4");
 var answerResponse = document.getElementById("answerResponse");
 var allDone = document.getElementById("allDone")
 var finalScoreIs = document.getElementById("complete");
-var initials = document.getElementById("initials");
-var submitButton = document.getElementById("submit");
-var goBack = document.getElementById("goBack");
+
 var clearHighScores = document.getElementById("clearHighScores");
 
 //TEXT
-score.textContent = "View High Scores";
-timer.textContent = "Time: " + totalScore;
 start.textContent = "Coding Quiz Challenge"
 explanation.textContent = "Try to answer the following code-related questions within 80 seconds. Every incorrect answers will penalize your time by ten seconds";
 submitButton.textContent = "Start Quiz";
-
 
 // QUESTIONS 
 var quizQuestions = [
@@ -74,6 +70,8 @@ var quizQuestions = [
 
 // timer.addEventListener("click", function();
 // Timer / Score Function 
+timer.textContent = "Time: " + totalScore;
+
 function submitButton() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
@@ -87,12 +85,31 @@ function submitButton() {
 }
 
 // Go to All Done page 
+
 function finalScorePage() {
     allDone.textContent = "All done!";
     finalScoreIs.textContent = "Your final score is " + finalScore;
-    submitButton.textContent - "Submit";
-    initials.textContent - "Enter Initials";
   }
+
+
+
+//Function to add in initials - THINK IS DONE 
+var initials = document.getElementById("initials");
+var intitialInput = document.getElementById("initialInput")
+var initialButton = document.getElementById("initialButton");
+var submittedInitial = document.getElementById("response");
+
+initialButton.textContent = "Submit";
+initials.textContent = "Enter Initials";
+
+initialButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  
+  console.log(event);
+   
+   var response = intitialInput.value;
+    submittedInitial.textContent = response; 
+ });
 
 // Function that runs through question and answer 
 var lastQuestionIndex = questions.length-1;
@@ -119,11 +136,16 @@ function showScore() {
   mainEl.appendChild(imgEl);
 
 }
+
+
+
+
 setTime();
 
  //Click Events 
 
- //View High Scores  
+ //View High Scores - append the fina
+
 
  //Start Quiz 
  start.addEventListener("click", start);

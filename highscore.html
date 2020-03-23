@@ -10,21 +10,30 @@
     <!--Link to Boostrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
-    <!--High Scores Page-->
+<!--Main Container Start-->
 <main class="container">
-    <div>
-    <h2 id="highScores">Highscores<h2>
-    </div>
+
+    <!--Header -->
+    <header>
+        <h2 id="highScores">Highscores<h2>
+    </header>
+
+    <!--High Scores updated with newest score on the top-->
+    <ol id="highScorelist"></ol>
+
+     <!--Buttons to either go back to main page or clear out the scores-->
     <div class="row col-12" id="highScoreButtons">
         <div class="col-md-3">
             <a href="index.html"><button id="goBack" class ="btn" type="button">Go Back</button></a>
         </div>   
+
         <div class="col-md-6">
             <button id="clearHighScore" class ="btn" type="button">Clear High Scores</button>
         </div>
     </div>
-</main>
 
+<!--Main Container End -->
+</main>
 
 <!--link to JavaScript Page -->
 <script src="script.js" type="text/javascript"></script>

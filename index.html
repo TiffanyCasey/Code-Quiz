@@ -15,7 +15,7 @@
     <!--Header with timer & link to high scores page-->
     <nav class="header">
         <div class="card-body justify-content-end">
-            <a id="score" href="highscore.html"></a>
+            <a id="score" href="highscore.html">View High Scores</a>
             <a id="timer"></a>
         </div>
     </nav>
@@ -50,13 +50,13 @@
             <form class="form-inline">
                 <div class="form-group mb-2">
                     <label class="sr-only" id="initials"></label>
-                    <input type="text" readonly class="form-control-plaintext">
+                    <input type="text" id="initialInput" readonly class="form-control-plaintext">
                 </div>
                 <div class="form-group mx-sm-3 mb-2">
                     <label for="inputInitials" class="sr-only"></label>
                     <input type="text" class="form-control">
                 </div>
-                <button class ="btn" type="button" id="submit"></button>
+                <button class ="btn" type="button" id="initialButton"></button>
             </form>
         </div>
     

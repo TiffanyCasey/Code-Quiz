@@ -54,7 +54,6 @@ p {
 }
 
 h2 {
-    padding-top: 150px;
     font-weight: bold;
     font-size: 35px;
 }
@@ -73,6 +72,7 @@ li {
  /* High Score Page */
 #highScores {
     text-align: left;
+    padding-top: 150px;
     font-weight: bolder; 
     padding-left: 15%;   
     padding-top: none !important; 
@@ -84,4 +84,10 @@ li {
 
 #highScoreButtons {
     padding-left: 15%; 
+}
+
+#highScoreList {
+    background-color: lavender;
+    padding-left: 15%; 
+    font-size: 15px;
 }

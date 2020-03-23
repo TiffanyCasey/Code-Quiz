@@ -19,48 +19,43 @@ var quizChallengePage = document.querySelector(".quizChallengePage");
 var quizQuestionsPage = document.querySelector(".quizQuestionsPage");
 var finalScorePage = document.querySelector(".finalScorePage");
 
-
-//Text
+//Coding Quiz Challenge Page 
 start.textContent = "Coding Quiz Challenge";
 explanation.textContent = "Try to answer the following code-related questions within 80 seconds. Every incorrect answers will penalize your time by ten seconds";
 submitButton.textContent = "Start Quiz";
 
-quizQuestionsPage.style.display = "none";
-finalScorePage.style.display = "none";
+quizQuestionsPage.style.display = "none";// Hide Quiz Questions Page
+finalScorePage.style.display = "none"; // Hide Final Core Page 
 
-//Start Quiz 
-submitButton.addEventListener("click", startQuiz);
-  
+// START QUIZ / TIMER FUNCTION
+submitButton.addEventListener("click", startQuiz); // Start Quiz Button 
 
-// Timer Function 
-var secondsLeft = 80;
-var totalScore = 0;
+  var secondsLeft = 80; // Seconds in Timer 
+  var startScore = 0; // Starting time 
+  var finalScore = "";  // Holder for Final Time 
+  var timer = document.getElementById("timer"); // Timer Variable 
 
-timer.textContent = "Time: " + totalScore;
+timer.textContent = "Time: " + startScore; // Holder text in nav bar  
 
-function startQuiz() {
-  var timer = document.getElementById("timer");
+function startQuiz() { // Timer function Begins 
+
+  finalScorePage.style.display = "none"; // Hide Final Core Page 
+  quizChallengePage.style.display ="none"; // Hide Quiz Challenge Page 
+  quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
+
   var timerInterval = setInterval(function() {
     secondsLeft--;
-    timer.textContent = "Time: " + totalScore;
+    timer.textContent = "Time: " + secondsLeft;
 
-    if(secondsLeft === 0) {
+    if(secondsleft === 0) {
       clearInterval(timerInterval);
-      finalScorePage();
-    } 
+      deductPoints();
+    }
   }, 1000);
-  startQuiz();
 }
 
-// Clear Explanation Page and go to Questions 
-
-
-
-
-
-
-
-// Function that runs through question and answer 
+    
+// Questions Function  
 var lastQuestionIndex = quizQuestions.length-1;
 var questionUserAnswering = 0;
 
@@ -81,6 +76,10 @@ function answerQuestion() {
 
 // Go to All Done page & Print Score
 function finalScorePage() {
+  quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page
+  quizQuestionsPage.style.display = "none"; // Hide Questions Page
+  finalScorePage.style.display = "block"; // Show Final Score Page 
+
     allDone.textContent = "All done!";
     finalScoreIs.textContent = "Your final score is " + finalScore;
   }
@@ -115,7 +114,6 @@ function showScore() {
   mainEl.appendChild(imgEl);
 }
 
- 
  
  // Questions
 var quizQuestions = [

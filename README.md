@@ -1,7 +1,7 @@
-# Code-Quiz
-Code Quiz
+# JAVASCRIPT QUIZ 
 
 
+Description: 
 
 PSEUDOCODE 
 
@@ -17,6 +17,9 @@ PSEUDOCODE
 - When questions are complete go to a new screen that says all done, displays final score and asks the user to enter their intials. Final score is how many seconds you have left. 
 
 - When user clicks submit it goes to a new page with all high scores shown as a list and gives you an option to either go back or clear high scores.
+
+Technologies Used: HTML5, CSS3, JavaScript
+
 
 
 

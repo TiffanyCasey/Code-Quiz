@@ -58,10 +58,17 @@ h2 {
     font-size: 35px;
 }
 
+/* Coding Quiz Challenge Page */
+.quizChallengePage {
+    align-items: center !important;
+    text-align: center !important; 
+}
+
 /* Quiz Question Page */
 li {
     list-style-type: none;
    }
+
 
  #answerResponse {
      font-style: italic;

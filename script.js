@@ -66,8 +66,8 @@ var finalScorePage = document.querySelector(".finalScorePage");
   },
 ]
 
-//quizQuestionsPage.style.display = "none"; // Hide Quiz Questions Page
-//finalScorePage.style.display = "none";   // Hide Final Core Page 
+quizQuestionsPage.style.display = "none"; // Hide Quiz Questions Page
+finalScorePage.style.display = "none";   // Hide Final Core Page 
 
 // EVENT LISTENER WHEN HIT START QUIZ 
 submitButton.addEventListener("click", startQuiz);  // Start Timer Button 
@@ -80,9 +80,9 @@ var timer = document.getElementById("timer"); // Timer Variable
 timer.textContent = "Time: " + startScore; // Holder text in nav bar 
 
 function startQuiz() { 
-//  finalScorePage.style.display = "none"; // Hide Final Core Page 
- // quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page 
- // quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
+finalScorePage.style.display = "none"; // Hide Final Core Page 
+quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page 
+quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
 
   var timerInterval = setInterval(function() {
     secondsLeft--;

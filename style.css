@@ -35,6 +35,15 @@ p {
     text-align: center;
 }
 
+.questionButton {
+    text-align: center !important;
+    background-color: #8064A2 !important;
+    border-color: #8064A2 !important;
+    color: white !important;
+    font-size: 22px !important;
+    padding: 0px 12px 0px 12px !important;
+}
+
 .btn {
     text-align: center !important;
     background-color: #8064A2 !important;
@@ -59,6 +68,7 @@ h2 {
 }
 
 /* Coding Quiz Challenge Page */
+
 .quizChallengePage {
     align-items: center !important;
     text-align: center !important; 
@@ -97,4 +107,11 @@ li {
     background-color: lavender;
     padding-left: 15%; 
     font-size: 15px;
+}
+
+/* Initial Page */
+
+.row {
+    align-items: center !important;
+    text-align: center !important; 
 }

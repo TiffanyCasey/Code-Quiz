@@ -25,28 +25,30 @@
 
         <!--Coding Quiz Challenge Page-->
         <div class="quizChallengePage">
-            <h1 id="start"></h1>
-            <p id="explanation"></p>
+            <h1 id="start">Coding Quiz Challenge</h1>
+            <p id="explanation">Try to answer the following code-related questions within 80 seconds. Every incorrect answers will penalize your time by ten seconds"</p>
             
-            <button id="submitButton" class ="btn active" type="button"></button>
+            <button id="submitButton" class ="btn active" type="button">Start Quiz</button>
         </div>
 
         <!--Questions -->
         <div id="quizQuestionsPage">
-            <h2 id="quizQuestionHeader"><h2>
-                <div type="button" class="questionButton" id="1" onclick="checkAnswer('1')"></div>
-                <div type="button" class="questionButton" id="2" onclick="checkAnswer('2')"></div>
-                <div type="button" class="questionButton" id="3" onclick="checkAnswer('3')"></div>
-                <div type="button" class="questionButton" id="4" onclick="checkAnswer('4')"></div>
-                <div id="correct"></div>
-            
+            <h2 id="quizQuestionHeader"></h2>
+            <ul>
+                <li><button type="button" class="questionButton" id="one"></button></li>
+                <li><button type="button" class="questionButton" id="two"></button></li>
+                <li><button type="button" class="questionButton" id="three"></button></li>
+                <li><button type="button" class="questionButton" id="four"></button></li>
+                <li><button id="correct"></div>
+            <ul>
+                
             <!--Response after user selects answer -->
             <div id="answerResponse"></div>
         </div>
 
         <!--Final Score-->
         <div class="finalScorePage">
-            <h2 id="allDone"></h2>
+            <h2 id="allDone">All done!</h2>
             <p id="finalScoreIs"></p>
             <form class="row">
                 <!--Text saying enter initials-->

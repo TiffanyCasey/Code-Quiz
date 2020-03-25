@@ -42,7 +42,9 @@ p {
     color: white !important;
     font-size: 22px !important;
     padding: 0px 12px 0px 12px !important;
+    margin: 5px; 
 }
+
 
 .btn {
     text-align: center !important;
@@ -62,16 +64,19 @@ p {
     padding: 0px 12px 0px 12px !important;
 }
 
-h2 {
-    font-weight: bold;
-    font-size: 35px;
-}
+
 
 /* Coding Quiz Challenge Page */
 
 .quizChallengePage {
     align-items: center !important;
     text-align: center !important; 
+}
+
+#quizQuestionHeader {
+    font-size: 16px;
+    font-weight: bolder; 
+
 }
 
 /* Quiz Question Page */
@@ -114,4 +119,8 @@ li {
 .row {
     align-items: center !important;
     text-align: center !important; 
+}
+
+#allDone {
+    font-weight: bolder;
 }

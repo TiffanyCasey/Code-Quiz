@@ -53,21 +53,21 @@ var finalScorePage = document.querySelector(".finalScorePage");
     [4, "4. parenthesis"],
     [correct, "3. quotes"],
 ,
-    [quizQuestionHeader, "A very useful tool used for developing and debugging for printing content to the debugger is:"],
+    [quizQuestionHeader, "A very useful tool used for developing and debugging for printing content to the debugger is:"],//
     [1, "1. JavaScript"],
     [2, "2. terminal / bash"],
     [3, "3. for loops"],
     [4, "4. console.log"],
     [correct, "4. console.log"],
-]
+];
 
 //Coding Quiz Challenge Page 
 start.textContent = "Coding Quiz Challenge";
 explanation.textContent = "Try to answer the following code-related questions within 80 seconds. Every incorrect answers will penalize your time by ten seconds";
 submitButton.textContent = "Start Quiz";
 
-//quizQuestionsPage.style.display = "none";// Hide Quiz Questions Page
-finalScorePage.style.display = "none"; // Hide Final Core Page 
+quizQuestionsPage.style.display = "none"; // Hide Quiz Questions Page
+finalScorePage.style.display = "none";   // Hide Final Core Page 
 
 // START QUIZ / TIMER FUNCTION
 submitButton.addEventListener("click", startQuiz)  // Start Timer Button 
@@ -78,11 +78,14 @@ submitButton.addEventListener("click", startQuiz)  // Start Timer Button
   var timer = document.getElementById("timer"); // Timer Variable 
 
 timer.textContent = "Time: " + startScore; // Holder text in nav bar  
+console.log(quizQuestions[0][1]);
+quizQuestionsPage.textContent = (`${quizQuestions[0][1]}`);
 
 function startQuiz() { // Timer function Begins 
   finalScorePage.style.display = "none"; // Hide Final Core Page 
   quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page 
   quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
+
 
   var timerInterval = setInterval(function() {
     secondsLeft--;
@@ -92,10 +95,17 @@ function startQuiz() { // Timer function Begins
       clearInterval(timerInterval);
     }
   }, 1000);
+}
 
-  // Loop Questions - NEED TO FIX 
+// Loop Questions - NEED TO FIX 
+function askQuestions () {
+
+
+
   for (var i = 0; i < quizQuestions.length; i++) {
     
+        //document.write(quizQuestionsPage[0]);
+
       if (questionButton === quizQuestions[5]) {
         startScore++;
         answerResponse.textContent = "Correct!";

@@ -11,17 +11,6 @@
     text-align: center;
 }
 
-/* Nav Bar */
- #score {
-    color:#8064A2; 
-    padding-left: 20px;
-}
-
- #timer {
-    float: right;
-    padding-right: 30px; 
- }
-
 h1 {
     padding-top: 150px;
     font-weight: bold !important;
@@ -53,6 +42,16 @@ p {
     padding: 0px 12px 0px 12px !important;
 }
 
+/* Nav Bar */
+ #score {
+    color:#8064A2; 
+    padding-left: 20px;
+}
+
+ #timer {
+    float: right;
+    padding-right: 30px; 
+ }
 
 /* Coding Quiz Challenge Page */
 
@@ -75,7 +74,7 @@ li {
     padding-left: 15%; 
    }
 
-   .questionButton {
+.questionButton {
     text-align: center !important;
     background-color: #8064A2 !important;
     border-color: #8064A2 !important;
@@ -88,20 +87,25 @@ li {
  #answerResponse {
      font-style: italic;
      color: grey;
-     size: 20px;
+     font-size: 30px;
+     padding-left: 15%;  
  }
 
  /* High Score Page */
+
+ #finalScoreIs {
+    padding-left: 15% !important;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 #highScores {
     text-align: left;
     padding-top: 150px;
     font-weight: bolder; 
     padding-left: 15%;   
     padding-top: none !important; 
-}
-
-#row {
-    padding-left: 15% !important;
 }
 
 #highScoreButtons {
@@ -114,13 +118,16 @@ li {
     font-size: 15px;
 }
 
-/* Initial Page */
+/* All Done Initial Page */
 
 .row {
     align-items: center !important;
     text-align: center !important; 
+    padding-left: 15% !important;
 }
 
 #allDone {
     font-weight: bolder;
+    padding-top: 100px;
+    padding-left: 15% !important;
 }

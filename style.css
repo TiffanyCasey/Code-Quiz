@@ -131,3 +131,8 @@ li {
     padding-top: 100px;
     padding-left: 15% !important;
 }
+
+ol {
+    font-size: 20px;
+    color: black;
+}

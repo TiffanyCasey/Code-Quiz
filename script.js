@@ -149,7 +149,6 @@ function checkAnswer(event) {
 }
 
 // GO TO "ALL DONE" PAGE AND SHOW FINAL SCORE
-var finalScore = secondsLeft; 
 
 function showFinalScore() { //Function to go to page when time out or quiz complete 
   quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page
@@ -158,8 +157,20 @@ function showFinalScore() { //Function to go to page when time out or quiz compl
   finalScorePage.style.display = "block"; // Show Final Score Page 
 
   if (startScore === 0 || quizQuestions.length -1) { 
-    finalScoreIs.textContent = "Your final score is " + finalScore;
+    finalScoreIs.textContent = "Your final score is " + secondsLeft;
   }
+}
+
+// STORE FINAL SCORE 
+renderFinalScores ();
+
+function renderFinalScores() { 
+  var secondsLeft = localStorage.getItem("secondsLeft"); // Returns value of final score 
+
+  if (secondsLeft === null) {
+    return;
+  }
+  printInitials.textContent = highScoreList;
 }
 
 // CAPTURE INITIALS AND GO TO HIGH SCORE PAGE 
@@ -174,25 +185,33 @@ initials.textContent = "Enter Your Initials: "; // Form text
 renderInitials ();
 
 function renderInitials() { 
-  var getInitials = localStorage.getItem("initialInput"); 
+  var getInitials = localStorage.getItem("initialInput"); // Returns value of Initials 
 
   if (getInitials === null) {
     return;
   }
-
-  printInitials.textContent = highScoreList;
+  printInitials.textContent = highScoreList; 
 }
 
-  initialButton.addEventListener("click", function(event) { 
-    event.preventDefault();
-
+  initialButton.addEventListener("click", function() { 
     var getInitials = document.getElementById("initialInput").value; 
-    console.log("getInitials", getInitials);
-
-    localStorage.setItem("getInitials", getInitials); 
+    localStorage.setItem("getInitials", getInitials); // Adds Intials to Storage
+    localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
 
     if (initialInput === "") {
       displayMessage("getInitials" + "finalScore");
       renderInitials ();
     }
 });
+
+
+
+// CLEAR HIGH SCORES 
+var clearHighScore = document.getElementById("clearHighScore");
+
+clearHighScore.addEventListener("click", function() {
+  localStorage.clear();
+  window.location.href = "highscore.html";
+})
+
+

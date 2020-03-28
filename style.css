@@ -112,11 +112,7 @@ li {
     padding-left: 15%; 
 }
 
-#highScoreList {
-    background-color: lavender;
-    padding-left: 15%; 
-    font-size: 15px;
-}
+
 
 /* All Done Initial Page */
 
@@ -132,7 +128,10 @@ li {
     padding-left: 15% !important;
 }
 
-ol {
-    font-size: 20px;
-    color: black;
+/* High Score Page */
+
+#highScoreList {
+    background-color: lavender;
+    padding-left: 15%; 
+    font-size: 15px;
 }

@@ -161,18 +161,6 @@ function showFinalScore() { //Function to go to page when time out or quiz compl
   }
 }
 
-// STORE FINAL SCORE 
-renderFinalScores ();
-
-function renderFinalScores() { 
-  var secondsLeft = localStorage.getItem("secondsLeft"); // Returns value of final score 
-
-  if (secondsLeft === null) {
-    return;
-  }
-  printInitials.textContent = highScoreList;
-}
-
 // CAPTURE INITIALS AND GO TO HIGH SCORE PAGE 
 var initialButton = document.getElementById("initialButton"); // Variable for Initial input
 var initials = document.getElementById("initials"); // Variable for Initial input
@@ -182,28 +170,35 @@ var printInitials = document.getElementById("highScoreList");
 initialButton.textContent = "Submit"; // Form button 
 initials.textContent = "Enter Your Initials: "; // Form text
 
-renderInitials ();
+initialButton.addEventListener("click", function() {  // Event Listener when entering ID 
+  var getInitials = document.getElementById("initialInput").value; 
 
-function renderInitials() { 
-  var getInitials = localStorage.getItem("initialInput"); // Returns value of Initials 
-
-  if (getInitials === null) {
-    return;
+  localStorage.setItem("getInitials", getInitials); // Adds Intials to Storage
+  localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
+  
+  renderFinalScores (); // // Returns value of final score
+  function renderFinalScores() { 
+    var secondsLeft = localStorage.getItem("secondsLeft");  
   }
-  printInitials.textContent = highScoreList; 
+
+  renderInitials (); // Returns value of Initials 
+  function renderInitials() { 
+    var getInitials = localStorage.getItem("initialInput");  
 }
-
-  initialButton.addEventListener("click", function() { 
-    var getInitials = document.getElementById("initialInput").value; 
-    localStorage.setItem("getInitials", getInitials); // Adds Intials to Storage
-    localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
-
-    if (initialInput === "") {
-      displayMessage("getInitials" + "finalScore");
-      renderInitials ();
-    }
 });
 
+// PRINTS HIGH SCORES 
+var highScores = [];
+
+for (var i = 0; i < highScores.length; i++) {
+  var highScores = highScores[i];
+
+  var li = document.createElement("li");
+  li.textContent = highScores;
+  getInitials.appendChild(li);
+  secondsLeft.appendChild(li);
+
+}
 
 
 // CLEAR HIGH SCORES 
@@ -213,5 +208,4 @@ clearHighScore.addEventListener("click", function() {
   localStorage.clear();
   window.location.href = "highscore.html";
 })
-
 

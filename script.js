@@ -75,13 +75,14 @@ timer.textContent = "Time: " + startScore; // Holder text in nav bar
 function startQuiz() { 
 finalScorePage.style.display = "none"; // Hide Final Core Page 
 quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page 
+highScoreList.style.display = "none"; // Hide High Score Page NEW
 quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
 
   var timerInterval = setInterval(function() { 
     secondsLeft--;
     timer.textContent = "Time: " + secondsLeft;
 
-    if (secondsLeft === 0 || quizQuestions.length === questionIndex+1) {
+    if (secondsLeft === 0 || quizQuestions.length === questionIndex-1) {
       clearInterval(timerInterval);
       showFinalScore();
     }
@@ -159,6 +160,8 @@ function showFinalScore() { //Function to go to page when time out or quiz compl
   if (startScore === 0 || quizQuestions.length -1) { 
     finalScoreIs.textContent = "Your final score is " + secondsLeft;
   }
+
+
 }
 
 // CAPTURE INITIALS AND GO TO HIGH SCORE PAGE 
@@ -169,6 +172,10 @@ var printInitials = document.getElementById("highScoreList");
 
 initialButton.textContent = "Submit"; // Form button 
 initials.textContent = "Enter Your Initials: "; // Form text
+
+// EVENT LISTENERS WHEN USER CLICKS BUTTON
+goBack.addEventListener("click", startQuiz) 
+
 
 initialButton.addEventListener("click", function() {  // Event Listener when entering ID 
   var getInitials = document.getElementById("initialInput").value; 
@@ -197,15 +204,11 @@ for (var i = 0; i < highScores.length; i++) {
   li.textContent = highScores;
   getInitials.appendChild(li);
   secondsLeft.appendChild(li);
-
 }
 
-
-// CLEAR HIGH SCORES 
-var clearHighScore = document.getElementById("clearHighScore");
-
-clearHighScore.addEventListener("click", function() {
-  localStorage.clear();
-  window.location.href = "highscore.html";
-})
-
+// // CLEAR HIGH SCORES 
+// var clearHighScore = document.getElementById("clearHighScore");
+// clearHighScore.addEventListener("click", function() {
+//   localStorage.clear();
+//   window.location.href = "highscore.html";
+// })

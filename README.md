@@ -1,13 +1,8 @@
 # JAVASCRIPT QUIZ 
 
+Description: Test your JavaScript knowledge with our quiz! You have 90 seconds to answer six multiple questions. You start with 90 points and loose 10 points every answer you get wrong. Your final score is the remaining seconds when you complete the quiz. When done, enter your initials to be recorded in the high score list! 
 
-Description: 
 
-PSEUDOCODE 
-
-- Make HTML 
-- Make variables for each Line, Question, button, etc. 
-- Generate an ID for each one 
 
 - Create an submit button to kick off questions and timer 
 - Add in 6 questions with 4 choices and program in correct choice. 

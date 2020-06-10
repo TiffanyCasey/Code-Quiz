@@ -15,7 +15,7 @@
     <!--Header with timer & link to high scores page-->
     <nav class="header">
         <div class="card-body justify-content-end">
-            <a id="score" href="highscore.html">View High Scores</a>
+            <a id="score" href="index.html">View High Scores</a>
             <a id="timer"></a>
         </div>
     </nav>
@@ -39,7 +39,7 @@
                 <li><button type="button" class="btn questionButton" id="two"></button></li>
                 <li><button type="button" class="btn questionButton" id="three"></button></li>
                 <li><button type="button" class="btn questionButton" id="four"></button></li>
-                <li><button id="correct"></div>
+                <!-- <li><button id="correct"></div> -->
             <ul>
                 
             <!--Response after user selects answer -->
@@ -56,10 +56,25 @@
                     <label for="text" id="initials" class="col col-form-label input-group"></label>
                     <div> 
                     <input type="text" class="col form-control" id="initialInput">
-                    <a href="highscore.html"><button class="btn" type="button" id="initialButton"></button></a>
+                    <button id="initialButton" class="btn" type="button" ></button></a>
                 </div>
             </form>
         </div>
+
+        <p id="highScoreList"></p>
+
+        <!--Buttons to either go back to main page or clear out the scores-->
+       <div class="row col-12" id="highScoreButtons">
+           <div class="col-md-3">
+               <button id="goBack" class ="btn" type="button">Go Back</button></a>
+           </div>   
+   
+           <div class="col-md-6">
+               <button id="clearHighScore" class ="btn" value="reset-form" type="button">Clear High Scores</button>
+           </div>
+       </div>
+
+
     </main>
 
 <!--link to JavaScript Page -->

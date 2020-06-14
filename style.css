@@ -12,6 +12,7 @@
 }
 
 h1 {
+    text-align: center;
     padding-top: 150px;
     font-weight: bold !important;
     font-size: 40px;
@@ -24,7 +25,11 @@ p {
     text-align: center;
 }
 
-.btn {
+#button {
+ text-align: center;
+}
+
+button {
     text-align: center !important;
     background-color: #8064A2 !important;
     border-color: #8064A2 !important;
@@ -111,7 +116,6 @@ li {
 #highScoreButtons {
     padding-left: 15%; 
 }
-
 
 
 /* All Done Initial Page */

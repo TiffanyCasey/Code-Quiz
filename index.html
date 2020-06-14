@@ -15,7 +15,7 @@
     <!--Header with timer & link to high scores page-->
     <nav class="header">
         <div class="card-body justify-content-end">
-            <a id="score" href="index.html">View High Scores</a>
+            <a id="score" href="#">View High Scores</a>
             <a id="timer"></a>
         </div>
     </nav>
@@ -24,11 +24,12 @@
     <main class="container">
 
         <!--Coding Quiz Challenge Page-->
-        <div class="quizChallengePage">
+        <div id="quizChallengePage">
             <h1 id="start">Coding Quiz Challenge</h1>
             <p id="explanation">Try to answer the following code-related questions within 80 seconds. Every incorrect answers will penalize your time by ten seconds"</p>
-            
-            <button id="submitButton" class ="btn active" type="button">Start Quiz</button>
+            <div id="button">   
+                <button id="submitButton" class ="btn active" type="button">Start Quiz</button>
+            </div>
         </div>
 
         <!--Questions -->
@@ -40,14 +41,14 @@
                 <li><button type="button" class="btn questionButton" id="three"></button></li>
                 <li><button type="button" class="btn questionButton" id="four"></button></li>
                 <!-- <li><button id="correct"></div> -->
-            <ul>
+            </ul>
                 
             <!--Response after user selects answer -->
             <div id="answerResponse"></div>
         </div>
 
         <!--Final Score-->
-        <div class="finalScorePage">
+        <div id="finalScorePage">
             <h2 id="allDone">All done!</h2>
             <div id="finalScoreIs"></div>
             <form class="row">
@@ -56,15 +57,15 @@
                     <label for="text" id="initials" class="col col-form-label input-group"></label>
                     <div> 
                     <input type="text" class="col form-control" id="initialInput">
-                    <button id="initialButton" class="btn" type="button" ></button></a>
+                    <button id="initialButton" class="btn" type="button"></button></a>
                 </div>
             </form>
         </div>
 
-        <p id="highScoreList"></p>
-
         <!--Buttons to either go back to main page or clear out the scores-->
-       <div class="row col-12" id="highScoreButtons">
+       <div id="highScoreButtons">
+            <h2 id="highScores">Highscores</h2>
+            <p id="highScoreList"></p>
            <div class="col-md-3">
                <button id="goBack" class ="btn" type="button">Go Back</button></a>
            </div>   
@@ -73,7 +74,6 @@
                <button id="clearHighScore" class ="btn" value="reset-form" type="button">Clear High Scores</button>
            </div>
        </div>
-
 
     </main>
 

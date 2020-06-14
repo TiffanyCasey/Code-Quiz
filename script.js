@@ -1,4 +1,5 @@
-//VARIABLE ID'S
+//VARIABLES
+var header = document.querySelector(".header");
 var score = document.getElementById("score");
 var submitButton = document.getElementById("submitButton");
 
@@ -10,14 +11,20 @@ var choice4 = document.getElementById("four");
 var correct = document.getElementById("correct");
 var answerResponse = document.getElementById("answerResponse");
 
-
 var finalScoreIs = document.getElementById("finalScoreIs");
 var quizQuestionsPage = document.getElementById("quizQuestionsPage");
-var questionButton = document.getElementsByClassName("questionButton");
+var questionButton = document.querySelector(".questionButton");
 
-//VARIABLE CLASSES TO HIDE/SHOW PAGES
-var quizChallengePage = document.querySelector(".quizChallengePage");
-var finalScorePage = document.querySelector(".finalScorePage");
+var quizChallengePage = document.getElementById("quizChallengePage");
+var finalScorePage = document.getElementById("finalScorePage");
+var highScoreButtons = document.getElementById("highScoreButtons");
+
+var initialButton = document.getElementById("initialButton"); 
+var initials = document.getElementById("initials"); 
+var initialInput = document.getElementById("initialInput"); 
+
+var allDone = document.getElementById("allDone");
+var allDoneButtons = document.getElementById("form-inline");
 
 // QUIZ QUESTION ARRAY
 var quizQuestions = [
@@ -63,7 +70,10 @@ var quizQuestions = [
 quizQuestionsPage.style.display = "none"; // Hide Quiz Questions Page
 finalScorePage.style.display = "none";   // Hide Final Core Page 
 
-submitButton.addEventListener("click", startQuiz);  // Event Listener when hit start quiz 
+submitButton.addEventListener("click", function() { // Event Listener when hit start quiz 
+  startQuiz()
+  console.log("CLICK SUBMIT")
+})
 
 // TIMER FUNCTION BEGINS 
 var secondsLeft = 80; // Seconds in Timer 
@@ -73,16 +83,14 @@ var timer = document.getElementById("timer"); // Timer Variable
 timer.textContent = "Time: " + startScore; // Holder text in nav bar 
 
 function startQuiz() { 
-finalScorePage.style.display = "none"; // Hide Final Core Page 
 quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page 
-highScoreList.style.display = "none"; // Hide High Score Page NEW
 quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
 
   var timerInterval = setInterval(function() { 
     secondsLeft--;
     timer.textContent = "Time: " + secondsLeft;
 
-    if (secondsLeft === 0 || quizQuestions.length === questionIndex-1) {
+    if (secondsLeft === 0 || quizQuestions.length === questionIndex+1) {
       clearInterval(timerInterval);
       showFinalScore();
     }
@@ -150,49 +158,48 @@ function checkAnswer(event) {
 }
 
 // GO TO "ALL DONE" PAGE AND SHOW FINAL SCORE
-
 function showFinalScore() { //Function to go to page when time out or quiz complete 
-  quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page
   quizQuestionsPage.style.display = "none"; // Hide Questions Page
-  answerResponse.style.display = "none"; // Hides correct/incorrect response 
+  highScoreButtons.style.display = "none"; // Hide Questions Page
   finalScorePage.style.display = "block"; // Show Final Score Page 
 
   if (startScore === 0 || quizQuestions.length -1) { 
     finalScoreIs.textContent = "Your final score is " + secondsLeft;
+
+    initialButton.textContent = "Submit"; // Form button 
+    initials.textContent = "Enter Your Initials: "; // Form text
   }
+} // end of showFinalScore
 
-
-}
-
-// CAPTURE INITIALS AND GO TO HIGH SCORE PAGE 
-var initialButton = document.getElementById("initialButton"); // Variable for Initial input
-var initials = document.getElementById("initials"); // Variable for Initial input
-var intitialInput = document.getElementById("initialInput"); // Variable for Initial input
-var printInitials = document.getElementById("highScoreList");
-
-initialButton.textContent = "Submit"; // Form button 
-initials.textContent = "Enter Your Initials: "; // Form text
-
-// EVENT LISTENERS WHEN USER CLICKS BUTTON
-goBack.addEventListener("click", startQuiz) 
-
-
-initialButton.addEventListener("click", function() {  // Event Listener when entering ID 
-  var getInitials = document.getElementById("initialInput").value; 
-
-  localStorage.setItem("getInitials", getInitials); // Adds Intials to Storage
-  localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
+initialButton.addEventListener("click", function() { // Event Listener to get / store initials & go to highscore page
+    var getInitials = document.getElementById("initialInput").value; 
   
-  renderFinalScores (); // // Returns value of final score
-  function renderFinalScores() { 
-    var secondsLeft = localStorage.getItem("secondsLeft");  
-  }
+    localStorage.setItem("getInitials", getInitials); // Adds Intials to Storage
+    localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
+    
+    
 
-  renderInitials (); // Returns value of Initials 
-  function renderInitials() { 
-    var getInitials = localStorage.getItem("initialInput");  
-}
-});
+    function renderFinalScores() { //  Returns value of final score
+      var secondsLeft = localStorage.getItem("secondsLeft");  
+    }
+    renderFinalScores (); 
+  
+    function renderInitials() { // Returns value of Initials 
+      var getInitials = localStorage.getItem("initialInput");  
+    }
+    renderInitials (); 
+    showHighScores()
+  }) // end of initial button event listener
+  
+function showHighScores() {
+  header.style.display = "none"; // Hide header 
+  allDone.style.display = "none"; // Hide all done
+  finalScoreIs.style.display = "none" // Hide Final Score
+  initials.style.display = "none" // Hide initial input
+  initialButton.style.display = "none" // Hide initial button
+  initialInput.style.display = "none" // Hide initial button
+
+  highScoreButtons.style.display = "block"; // Show Final Score Page 
 
 // PRINTS HIGH SCORES 
 var highScores = [];
@@ -205,10 +212,25 @@ for (var i = 0; i < highScores.length; i++) {
   getInitials.appendChild(li);
   secondsLeft.appendChild(li);
 }
+}
 
-// // CLEAR HIGH SCORES 
-// var clearHighScore = document.getElementById("clearHighScore");
-// clearHighScore.addEventListener("click", function() {
-//   localStorage.clear();
-//   window.location.href = "highscore.html";
-// })
+// GO BACK BUTTON EVENT liSTENER - WORKS 
+goBack.addEventListener("click", function() { // Go back to the home page
+  quizChallengePage.style.display = "block"; 
+  header.style.display = "block"; // Hide header 
+  finalScorePage.style.display = "none";
+})
+
+// CLEAR HIGH SCORES - WORKS
+clearHighScore.addEventListener("click", function() {
+  localStorage.clear();
+})
+
+// Click to view high scores
+score.addEventListener("click", function() {
+  quizChallengePage.style.display = "none"; // Hide Quiz Questions Page
+  showFinalScore()
+})
+
+
+

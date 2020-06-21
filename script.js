@@ -1,4 +1,5 @@
 //VARIABLES
+// var body = document.body;
 var header = document.querySelector(".header");
 var score = document.getElementById("score");
 var submitButton = document.getElementById("submitButton");
@@ -172,47 +173,24 @@ function showFinalScore() { //Function to go to page when time out or quiz compl
 } // end of showFinalScore
 
 initialButton.addEventListener("click", function() { // Event Listener to get / store initials & go to highscore page
-    var getInitials = document.getElementById("initialInput").value; 
-  
-    localStorage.setItem("getInitials", getInitials); // Adds Intials to Storage
-    localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
-    
-    
-
-    function renderFinalScores() { //  Returns value of final score
-      var secondsLeft = localStorage.getItem("secondsLeft");  
-    }
-    renderFinalScores (); 
-  
-    function renderInitials() { // Returns value of Initials 
-      var getInitials = localStorage.getItem("initialInput");  
-    }
-    renderInitials (); 
-    showHighScores()
-  }) // end of initial button event listener
-  
-function showHighScores() {
   header.style.display = "none"; // Hide header 
   allDone.style.display = "none"; // Hide all done
   finalScoreIs.style.display = "none" // Hide Final Score
   initials.style.display = "none" // Hide initial input
   initialButton.style.display = "none" // Hide initial button
   initialInput.style.display = "none" // Hide initial button
-
   highScoreButtons.style.display = "block"; // Show Final Score Page 
+  
+  var getInitials = document.getElementById("initialInput").value; // captures the value of the initials 
+  
+  localStorage.setItem("getInitials", getInitials); // Adds initials to Storage
+  localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
 
-// PRINTS HIGH SCORES 
-var highScores = [];
+  var highScores = getInitials + ": " + secondsLeft; // add in + getInitials when read it
 
-for (var i = 0; i < highScores.length; i++) {
-  var highScores = highScores[i];
+  $("#highScoreList").append(highScores) // Appends high score & initials
 
-  var li = document.createElement("li");
-  li.textContent = highScores;
-  getInitials.appendChild(li);
-  secondsLeft.appendChild(li);
-}
-}
+}) // end of initial button event listener
 
 // GO BACK BUTTON EVENT liSTENER - WORKS 
 goBack.addEventListener("click", function() { // Go back to the home page
@@ -226,11 +204,14 @@ clearHighScore.addEventListener("click", function() {
   localStorage.clear();
 })
 
-// Click to view high scores
+// CLICK TO VIEW HIGH SCORES- Currently shows "All done page"
 score.addEventListener("click", function() {
   quizChallengePage.style.display = "none"; // Hide Quiz Questions Page
   showFinalScore()
 })
+
+
+
 
 
 

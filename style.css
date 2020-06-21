@@ -47,6 +47,11 @@ button {
     padding: 0px 12px 0px 12px !important;
 }
 
+#goBack, #clearHighScoreList{
+    display: inline-block;
+    vertical-align: top;
+}
+
 /* Nav Bar */
  #score {
     color:#8064A2; 
@@ -109,12 +114,18 @@ li {
     text-align: left;
     padding-top: 150px;
     font-weight: bolder; 
-    padding-left: 15%;   
     padding-top: none !important; 
 }
 
+#highScoreList {
+    background-color: lavender;
+    font-size: 20px;
+    padding-right: 75%;
+}
+
 #highScoreButtons {
-    padding-left: 15%; 
+    margin-left: 15%; 
+    margin-right: 15%;
 }
 
 
@@ -132,10 +143,3 @@ li {
     padding-left: 15% !important;
 }
 
-/* High Score Page */
-
-#highScoreList {
-    background-color: lavender;
-    padding-left: 15%; 
-    font-size: 15px;
-}

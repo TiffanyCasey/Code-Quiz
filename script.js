@@ -27,6 +27,8 @@ var initialInput = document.getElementById("initialInput");
 var allDone = document.getElementById("allDone");
 var allDoneButtons = document.getElementById("form-inline");
 
+var timer = document.getElementById("timer"); // Timer Variable 
+
 // QUIZ QUESTION ARRAY
 var quizQuestions = [
   {
@@ -67,31 +69,37 @@ var quizQuestions = [
   },
 ]
 
-//CODING QUIZ CHALLENGE PAGE 
-quizQuestionsPage.style.display = "none"; // Hide Quiz Questions Page
-finalScorePage.style.display = "none";   // Hide Final Core Page 
+var startScore = 0; 
+var questionIndex = 0;
 
-submitButton.addEventListener("click", function() { // Event Listener when hit start quiz 
-  startQuiz()
-  console.log("CLICK SUBMIT")
-})
+// FIRST PAGE 
+function codeQuizChallenge() {
+  quizChallengePage.style.display = "block"; // Shows Rules 
+  header.style.display = "block"; // Shows Header
+  quizQuestionsPage.style.display = "none"; // Hide Quiz Questions Page
+  finalScorePage.style.display = "none";   // Hide Final Core Page 
 
-// TIMER FUNCTION BEGINS 
-var secondsLeft = 80; // Seconds in Timer 
-var startScore = 0; // Starting time 
-var timer = document.getElementById("timer"); // Timer Variable 
+  var startScore = 0; // Starting time 
+  timer.textContent = "Time: " + startScore; // Holder text in nav bar 
+}
 
-timer.textContent = "Time: " + startScore; // Holder text in nav bar 
+// RESETTING GLOBAL VARIABLES WHEN RESTART QUIZ 
+function resetVariables() {
+  startScore = 0; 
+  questionIndex = 0;
+}
 
+// STARTS QUIZ 
 function startQuiz() { 
-quizChallengePage.style.display = "none"; // Hide Quiz Challenge Page 
+quizChallengePage.style.display = "none"; // Hide Rules 
 quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
+
+secondsLeft = 80; // seconds in Timer 
 
   var timerInterval = setInterval(function() { 
     secondsLeft--;
     timer.textContent = "Time: " + secondsLeft;
-
-    if (secondsLeft === 0 || quizQuestions.length === questionIndex+1) {
+    if (secondsLeft === 0 || quizQuestions.length === questionIndex) {
       clearInterval(timerInterval);
       showFinalScore();
     }
@@ -99,9 +107,6 @@ quizQuestionsPage.style.display = "block"; // Show Quiz Questions Page
 }
 
 // SHOW QUESTIONS
-var questionIndex = 0;
-var previousQuestionIndex = quizQuestions.length -1;
-
 function showQuestions() {
   var q = quizQuestions[questionIndex];
 
@@ -116,7 +121,7 @@ function showQuestions() {
   choice4.setAttribute("data-answer", q.four);
 }
 
-// EVENT LISTENERS WHEN USER CLICKS BUTTON
+// EVENT LISTENERS WHEN USER CLICKS ANSWERS 
 showQuestions();
 choice1.addEventListener("click", function (event) {
   checkAnswer(event);
@@ -163,16 +168,20 @@ function showFinalScore() { //Function to go to page when time out or quiz compl
   quizQuestionsPage.style.display = "none"; // Hide Questions Page
   highScoreButtons.style.display = "none"; // Hide Questions Page
   finalScorePage.style.display = "block"; // Show Final Score Page 
+  finalScoreIs.style.display = "block" // Show Final Score
+  initials.style.display = "block" // Show initial input
+  initialButton.style.display = "block" // Show initial button
+  initialInput.style.display = "block" // Show initial input
 
-  if (startScore === 0 || quizQuestions.length -1) { 
     finalScoreIs.textContent = "Your final score is " + secondsLeft;
-
     initialButton.textContent = "Submit"; // Form button 
     initials.textContent = "Enter Your Initials: "; // Form text
-  }
 } // end of showFinalScore
 
-initialButton.addEventListener("click", function() { // Event Listener to get / store initials & go to highscore page
+var highScoreArray = [] // Global variable 
+
+// SHOWS ALL HIGH SCORES 
+function showHighScores() {
   header.style.display = "none"; // Hide header 
   allDone.style.display = "none"; // Hide all done
   finalScoreIs.style.display = "none" // Hide Final Score
@@ -182,35 +191,54 @@ initialButton.addEventListener("click", function() { // Event Listener to get / 
   highScoreButtons.style.display = "block"; // Show Final Score Page 
   
   var getInitials = document.getElementById("initialInput").value; // captures the value of the initials 
+
+  var highScoreArray = JSON.parse(localStorage.getItem("highScore")) || [];
   
-  localStorage.setItem("getInitials", getInitials); // Adds initials to Storage
-  localStorage.setItem("secondsLeft", secondsLeft);  // Adds final core to Storage
+  var localStorageArray = { score: secondsLeft, initials: getInitials };
+  highScoreArray.push(localStorageArray)
+  localStorage.setItem("highScore", JSON.stringify(highScoreArray)); // Adds array 
 
   var highScores = getInitials + ": " + secondsLeft; // add in + getInitials when read it
 
   $("#highScoreList").append(highScores) // Appends high score & initials
+}
 
-}) // end of initial button event listener
+////////////EVENT LISTENERS////////////////
 
-// GO BACK BUTTON EVENT liSTENER - WORKS 
-goBack.addEventListener("click", function() { // Go back to the home page
-  quizChallengePage.style.display = "block"; 
-  header.style.display = "block"; // Hide header 
-  finalScorePage.style.display = "none";
+// START QUIZ - WORKS 
+submitButton.addEventListener("click", function() { 
+  startQuiz()
+  console.log("start")
 })
+
+// CLICK TO VIEW HIGH SCORES - DOES NOT WORK 
+score.addEventListener("click", function() {
+  showHighScores();
+  console.log("view high scores")
+})
+
+// CLICK INTIAL BUTTON TO SHOW HIGH SCORES - WORKS
+initialButton.addEventListener("click", function() { 
+  showHighScores();
+  console.log("initial button")
+}) 
 
 // CLEAR HIGH SCORES - WORKS
 clearHighScore.addEventListener("click", function() {
   localStorage.clear();
 })
 
-// CLICK TO VIEW HIGH SCORES- Currently shows "All done page"
-score.addEventListener("click", function() {
-  quizChallengePage.style.display = "none"; // Hide Quiz Questions Page
-  showFinalScore()
+// GO BACK BUTTON EVENT liSTENER - WORKS 
+goBack.addEventListener("click", function() { // Go back to the home page
+  $("#highScoreList").empty() // clears out container
+  $("#initialInput").val("") // clears out the value in initial input 
+  resetVariables()
+  codeQuizChallenge();
+  console.log("restart quiz")
 })
 
-
+// Page starts at home page 
+codeQuizChallenge(); 
 
 
 
